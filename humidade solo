@@ -1,0 +1,25 @@
+#define entradaDigital 52
+#define entradaAnalogica 0 
+
+bool dSensor;
+int aSensor;
+
+void setup() {
+  Serial.begin(9600);
+
+  pinMode(entradaDigital, INPUT);
+}
+
+void loop() {
+  dSensor = digitalRead(entradaDigital);
+  aSensor = analogRead(entradaAnalogica);
+
+  Serial.print("Leitura entrada digital: ");
+  Serial.print(dSensor);
+
+  Serial.print("Leitura entrada analógica: ");
+  Serial.print(aSensor);
+  Serial.print(); 
+
+  delay(1000);
+}
