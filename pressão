@@ -1,0 +1,45 @@
+#include <Adafruit_Sensor.h>
+#include <Adafruit_BME280.h>
+ 
+#define PressaoaNivelDoMar_HPA (1013.25)
+ 
+Adafruit_BME280 bme;
+
+void setup() {
+Serial.begin(9600);
+Serial.println("Teste do sensor BME280");
+ 
+bme.begin();
+}
+
+
+void loop() {
+ 
+float temp     = bme.readTemperature();
+float umid     = bme.readHumidity();
+float pressao  = bme.readPressure() / 100.0F;
+float altitude = bme.readAltitude(PressaoaNivelDoMar_HPA);
+ 
+Serial.println();
+ 
+Serial.print("Umidade : ");
+Serial.print(umid);
+Serial.println(" %");
+ 
+Serial.print("Temperatura : ");
+Serial.print(temp);
+Serial.println(" *C");
+ 
+Serial.print("Pressao : ");
+Serial.print(pressao);
+Serial.println(" hPa");
+ 
+Serial.print("Altitude Aproximada : ");
+Serial.print(altitude);
+Serial.println(" m");
+ 
+Serial.println();
+ 
+delay(1000);
+ 
+}
